@@ -1,0 +1,23 @@
+/*Need a main Css to style the entire page*/
+
+/*a style for each section of the html page*/
+
+/*navbar*/
+#hsbutton {
+  background: none;
+  border: none;
+}
+
+/*Intro section */
+#ansButton {
+  background: none;
+  border: none;
+}
+
+#ansButton:hover {
+  background-color: rgb(0, 209, 63);
+}
+
+/*Question Section*/
+
+/*HighScore Section*/
