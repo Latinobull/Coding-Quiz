@@ -19,5 +19,7 @@
 }
 
 /*Question Section*/
-
+#Qdisplay {
+  display: none;
+}
 /*HighScore Section*/
