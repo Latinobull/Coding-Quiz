@@ -13,13 +13,13 @@ var questionMove = false
 arrayQu=0
 //display timer
 timeLeft.text(timeDisplay)
+console.log(questionMove)
 
 //function to start the game 
 $("#readyButton").on("click", function() {
     $("#begin").css("display", "none")
     questionsEl.css("display", "block")
     timeDisplay = 60
-    $("#ques").text(questionArray[0])
     questionStrings()
     //countdown timer
     interval = setInterval(function(){
@@ -36,29 +36,31 @@ $("#readyButton").on("click", function() {
     }, 1000)    
 })
 //function to display questions and interaction with right and wrong answers
+
+$("#ques").text(questionArray[arrayQu])
 function questionStrings(){
-   
-    if (questionMove = true) {
-        arrayQu++
-        $("#ques").text(questionArray[arrayQu])
+    $(".ansButton").on("click", function() {
+        questionMove = !questionMove
+         console.log(questionMove)
+        
 
-        console.log(questionArray[arrayQu])
-        console.log(arrayQu)
-    }    
-    if(arrayQu == 1) {
-    questionMove = false
-    console.log(questionMove)
-    }
+        if (questionMove === true) {
+            arrayQu++
+            $("#ques").text(questionArray[arrayQu])
+            console.log(questionArray[arrayQu])
+            console.log("Am I WORKING!!")
+        }   
+        // if(arrayQu == 1) {
+        // questionMove = false
+        // console.log(questionMove)
+        // }
+    })
+
+
+
+
+
 }
-$("#ansButton").on("click", function() {
-    questionMove = true
-    console.log(questionMove)
-})
-
-
-
-
-
 // function to show how the final score and to enter high score
 
 //restart button function
