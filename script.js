@@ -16,6 +16,7 @@ var score = $("#score")
 var userName = $("#playerName")
 var userStorage = window.localStorage
 var savedScores = []
+var highScore = $("#hsScreen")
 //display timer
 timeLeft.text(timeDisplay)
 //function to start the game 
@@ -106,11 +107,15 @@ function endQuiz() {
             savedScores.push(userRecord)
             playerStorage.setItem("saved scores", JSON.stringify(savedScores))
     })
-    }
+}
 
 
 // function to show how the final score and to enter high score
-
+$("#hsbutton").on("click", function() {
+    questionsEl.css("display", "none")
+    saveScore.css("display", "none")
+    highScore.css("display", "block")
+})
 
 //restart button function
 
