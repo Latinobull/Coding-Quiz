@@ -1,6 +1,6 @@
 //variables
 var timeLeft = $("#timer")
-var timeDisplay = 5
+var timeDisplay
 var currentHighscore = 0
 var questionArray = ["Q0", "Q1", "Q2", "Q3","Q4"]
 var answerArray0 = ["A0-1", "A0-2", "A0-3", "A0-4"]
@@ -15,10 +15,13 @@ var saveScore = $("#gameResults")
 var score = $("#score")
 //display timer
 timeLeft.text(timeDisplay)
-console.log(questionMove)
-console.log(answerArray0)
 //function to start the game 
 $("#readyButton").on("click", function() {
+    timeDisplay = 5
+    timeLeft.text(timeDisplay)
+    console.log(questionMove)
+    console.log(answerArray0)
+    
     $("#begin").css("display", "none")
     questionsEl.css("display", "block")
     questionStrings()
@@ -83,7 +86,10 @@ function endQuiz() {
     questionsEl.css("display", "none")
     saveScore.css("display", "block")
     score.text(timeDisplay)
-    
+    $("#redoBtn").on("click", function() {
+        saveScore.css("display", "none")
+        $("#begin").css("display", "block")
+    })
     }
 
 
