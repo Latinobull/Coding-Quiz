@@ -13,11 +13,14 @@ var questionMove = false
 arrayQu= 0
 var saveScore = $("#gameResults")
 var score = $("#score")
+var userName = $("#playerName")
+var userStorage = window.localStorage
+var savedScores = []
 //display timer
 timeLeft.text(timeDisplay)
 //function to start the game 
 $("#readyButton").on("click", function() {
-    timeDisplay = 5
+    timeDisplay = 2
     timeLeft.text(timeDisplay)
     console.log(questionMove)
     console.log(answerArray0)
@@ -89,6 +92,19 @@ function endQuiz() {
     $("#redoBtn").on("click", function() {
         saveScore.css("display", "none")
         $("#begin").css("display", "block")
+    })
+    $("#scoreBtn").on("click", function(e) {
+        e.preventDefault
+        var nameEntered = userName.value.trim()
+        if (nameEntered != "")
+    
+            var userRecord = {
+                playerName: nameEntered,
+                playerScore: timeDisplay,
+            }
+            console.log(userRecord) 
+            savedScores.push(userRecord)
+            playerStorage.setItem("saved scores", JSON.stringify(savedScores))
     })
     }
 
