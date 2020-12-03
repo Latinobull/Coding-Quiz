@@ -12,9 +12,10 @@ var answerArray2 = ["Quotes", "Curly Brackets", "Parentheses", "Numbers"]
 var answerArray3 = ["Numbers", "Strings", "Objects", "All of the Ab0ve"]
 var answerArray4 = ["Quotes", "Curly Brackets", "Parentheses", "Square Brackets"]
 var answerArray5 = ["Print()", "Console.log()", "System.out.Println()", "cout "]
+var answerPool = answerArray1
 var questionsEl = $("#Qdisplay")
 var questionMove = false
-arrayQu= 0
+var arrayQu = 0
 var saveScore = $("#gameResults")
 var score = $("#score")
 var userName = $("#playerName")
@@ -25,7 +26,7 @@ var highScore = $("#hsScreen")
 timeLeft.text(timeDisplay)
 //function to start the game 
 $("#readyButton").on("click", function() {
-    timeDisplay = 2
+    timeDisplay = 60
     timeLeft.text(timeDisplay)
     console.log(questionMove)
     console.log(answerArray1)
@@ -51,14 +52,23 @@ $("#readyButton").on("click", function() {
 $("#ques").text(questionArray[arrayQu])
 function questionStrings(){
 
-    for ( i = 0; i < answerArray1.length; i++) {
-        $("<li>").append(answerArray1[i])
+    for ( i = 0; i < answerPool.length; i++) {
+        //$("<li>").append(answerArray1[i])
+        var test = $("<li>")
+        var button = $("<button>")
+        button.addClass("answers")
+        button.attr("id", i)
+        button.text(answerPool[i])
+        test.append(button)
+        $(".test").append(test)
+        // $(".ansButton").text(answerArray1[i])
         console.log(answerArray1)
     }
-    $("#ans2").on("click", function() {
+    $("body").on("click", "button.answers", function() {
+        questionMove == true
          console.log(questionMove)
             
-         var answerPool = answerArray1
+         
             if (arrayQu = 0) {
                 answerPool = answerArray1
             }
@@ -76,19 +86,18 @@ function questionStrings(){
             console.log(answerPool)
         
         if (questionMove === true) {
-            arrayQu+
+            arrayQu ++
             $("#ques").text(questionArray[arrayQu])
             console.log(questionArray[arrayQu])
             questionMove = false
         }   
         else {
-            questionMove = false
-             console.log(questionMove)
+             console.log("wrong answer")
             }
 
     })
 }
-// doing question and answers another day mind is fried lol
+// I CANT FIGURE THIS OUT!!!!!!!AERHGAEIHFBGA0EF
 
 function endQuiz() {
     questionsEl.css("display", "none")
@@ -99,17 +108,17 @@ function endQuiz() {
         $("#begin").css("display", "block")
     })
     $("#scoreBtn").on("click", function(e) {
-        e.preventDefault
-        var nameEntered = userName.value.trim()
+        e.preventDefault()
+        var nameEntered = userName.value
         if (nameEntered != "")
     
             var userRecord = {
-                playerName: nameEntered,
-                playerScore: timeDisplay,
+                userName: nameEntered,
+                userScore: timeDisplay,
             }
             console.log(userRecord) 
             savedScores.push(userRecord)
-            playerStorage.setItem("saved scores", JSON.stringify(savedScores))
+            userStorage.setItem("saved scores", JSON.stringify(savedScores))
     })
 }
 
@@ -119,7 +128,24 @@ $("#hsbutton").on("click", function() {
     questionsEl.css("display", "none")
     saveScore.css("display", "none")
     highScore.css("display", "block")
+    $("#begin").css("display", "none")
 })
+function Highscore(event) {
+    event.preventDefault()
 
+    for (var i = 0; i < savedScores.length; i++) {
+        var userNameLog = $("<li>")
+        var userScoreLog = $("<li>")
+        $("#hsScreen").append(userNameLog)
+        userNameLog.text(savedScores[i].userName)
+        $("#hsscreen").append(userScoreLog)
+        userNameLog.text(savedScores[i].userScore)
+    }
+}
+
+$("#returnBtn").on("click", function() {
+    highScore.css("display", "none")
+    $("#begin").css("display", "block")
+})
 //restart button function
 

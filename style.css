@@ -1,11 +1,17 @@
 /*Need a main Css to style the entire page*/
-
+body {
+  background-color: black;
+  color: green;
+}
 /*a style for each section of the html page*/
 
 /*navbar*/
 #hsbutton {
   background: none;
   border: none;
+}
+.navcss {
+  color: black;
 }
 
 /*Intro section */
@@ -21,9 +27,13 @@
 /*Question Section*/
 #Qdisplay {
   display: none;
+  color: green;
 }
 
 #gameResults {
   display: none;
 }
 /*HighScore Section*/
+#hsScreen {
+  display: none;
+}

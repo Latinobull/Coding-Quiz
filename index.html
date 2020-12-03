@@ -10,16 +10,11 @@
 </head>
 <body>
     <!--Navbar Section-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-success navcss">
         <a class="navbar-brand btn btn-primary" href="#" role="button" id ="hsbutton">Highscore</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarText">
           <span class="navbar-text ml-auto" id="timer">
             Timer
           </span>
-        </div>
     </nav>
     <main class = "container">
         <!--beginning of the quiz-->
@@ -34,23 +29,25 @@
             Featured
             </h2>
             <h3>
-            <ul>
-              <li id="ans1"> <button id="ansButton">Cras justo odio</button></li>
-              <li id="ans2"> <button id="ansButton">Cras justo odio</button></li>
-              <li id="ans3"> <button id="ansButton">Cras justo odio</button></li>
-              <li id="ans4"> <button id="ansButton">Cras justo odio</button></li>
+            <ul class= "test">
+              <!-- <li id="ans1"> <button class="ansButton"></button></li>
+              <li id="ans2"> <button class="ansButton"></button></li>
+              <li id="ans3"> <button class="ansButton"></button></li>
+              <li id="ans4"> <button class="ansButton"></button></li> -->
             </ul>
           </h3>
         </div>
         <h2 id="gameResults" class="col-sm-12"> Your final score is <span id="score"></span>
-          <form id="scoreSubmissionForm" class="form-group">
+          <form class="form-group">
           <input type="text" id="playerName"  class="form-control"  name="playerName" placeholder="Your Name">
           <button id="scoreBtn" class="btn btn-success">Save Score</button>
           </form>
           <button id="redoBtn" class="btn btn-danger">Want to retake the quiz?</button>
         </h2>
         <!--Highscore Section-->
-        <div id="hsScreen"></div>
+        <div id="hsScreen" class="col-sm-12">
+          <button id="returnBtn"> Back to Quiz</button>
+        </div>
 
 
 
