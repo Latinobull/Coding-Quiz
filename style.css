@@ -22,4 +22,8 @@
 #Qdisplay {
   display: none;
 }
+
+#gameResults {
+  display: none;
+}
 /*HighScore Section*/
