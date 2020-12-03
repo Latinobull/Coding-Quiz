@@ -28,8 +28,6 @@ timeLeft.text(timeDisplay)
 $("#readyButton").on("click", function() {
     timeDisplay = 60
     timeLeft.text(timeDisplay)
-    console.log(questionMove)
-    console.log(answerArray1)
     
     $("#begin").css("display", "none")
     questionsEl.css("display", "block")
@@ -41,7 +39,7 @@ $("#readyButton").on("click", function() {
             timeLeft.text(timeDisplay)
             
         }
-        else if (timeDisplay == 0){
+        else if (timeDisplay == 0 || arrayQu == 5){
             clearInterval(interval)
            return endQuiz()
         }
@@ -49,11 +47,15 @@ $("#readyButton").on("click", function() {
 })
 //function to display questions and interaction with right and wrong answers
 
-$("#ques").text(questionArray[arrayQu])
 function questionStrings(){
-
+    questionMove = false
+    console.log(questionMove)
+    $(".test").empty()
+    $("#ques").text(questionArray[arrayQu])
+    
+    //console.log(arrayQu)
+    console.log(answerPool)
     for ( i = 0; i < answerPool.length; i++) {
-        //$("<li>").append(answerArray1[i])
         var test = $("<li>")
         var button = $("<button>")
         button.addClass("answers")
@@ -61,41 +63,46 @@ function questionStrings(){
         button.text(answerPool[i])
         test.append(button)
         $(".test").append(test)
-        // $(".ansButton").text(answerArray1[i])
-        console.log(answerArray1)
+
     }
-    $("body").on("click", "button.answers", function() {
-        questionMove == true
+    
+    $("body").on("click", "[id^='1']", function() {
+        questionMove = true
          console.log(questionMove)
             
          
+            
+        if (questionMove === true) {
+            arrayQu ++
             if (arrayQu = 0) {
                 answerPool = answerArray1
             }
             else if (arrayQu = 1) {
                 answerPool = answerArray2
             }
-    
+        
             else if (arrayQu = 2) {
                 answerPool = answerArray3
             }
             else if (arrayQu = 3) {
                 answerPool = answerArray4
             }
+            else if (arrayQu = 4) {
+                answerPool = answerArray5
+            }
             console.log(arrayQu)
-            console.log(answerPool)
-        
-        if (questionMove === true) {
-            arrayQu ++
-            $("#ques").text(questionArray[arrayQu])
-            console.log(questionArray[arrayQu])
-            questionMove = false
+            //console.log(questionArray[arrayQu])
+            questionMove = !true
+            console.log(questionMove)
+            questionStrings()
         }   
         else {
              console.log("wrong answer")
             }
 
     })
+    
+
 }
 // I CANT FIGURE THIS OUT!!!!!!!AERHGAEIHFBGA0EF
 
