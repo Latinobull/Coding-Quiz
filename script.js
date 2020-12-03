@@ -2,12 +2,16 @@
 var timeLeft = $("#timer")
 var timeDisplay
 var currentHighscore = 0
-var questionArray = ["Q0", "Q1", "Q2", "Q3","Q4"]
-var answerArray0 = ["A0-1", "A0-2", "A0-3", "A0-4"]
-var answerArray1 = ["A1-1", "A1-2", "A1-3", "A1-4"]
-var answerArray2 = ["A2-1", "A2-2", "A2-3", "A2-4"]
-var answerArray3 = ["A3-1", "A3-2", "A3-3", "A3-4"]
-var answerArray4 = ["A4-1", "A4-2", "A4-3", "A4-4"]
+var questionArray = ["Q1: Commonly used data type do not include _____",
+ "Q2: The condition of a loop is enclosed in _____",
+ "Q3: arrays in JavaScript can be used to store _____",
+ "Q4: String values must be enclosed within _____",
+ "Q5: To print to cosole in JavaScript, the syntax is _____"]
+var answerArray1 = ["Strings", "Booleans", "Alerts", "Numbers"]
+var answerArray2 = ["Quotes", "Curly Brackets", "Parentheses", "Numbers"]
+var answerArray3 = ["Numbers", "Strings", "Objects", "All of the Ab0ve"]
+var answerArray4 = ["Quotes", "Curly Brackets", "Parentheses", "Square Brackets"]
+var answerArray5 = ["Print()", "Console.log()", "System.out.Println()", "cout "]
 var questionsEl = $("#Qdisplay")
 var questionMove = false
 arrayQu= 0
@@ -24,7 +28,7 @@ $("#readyButton").on("click", function() {
     timeDisplay = 2
     timeLeft.text(timeDisplay)
     console.log(questionMove)
-    console.log(answerArray0)
+    console.log(answerArray1)
     
     $("#begin").css("display", "none")
     questionsEl.css("display", "block")
@@ -47,26 +51,26 @@ $("#readyButton").on("click", function() {
 $("#ques").text(questionArray[arrayQu])
 function questionStrings(){
 
-    for ( i = 0; i < answerArray0.length; i++) {
-        $("<li>").append(answerArray0[i])
-        console.log(answerArray0)
+    for ( i = 0; i < answerArray1.length; i++) {
+        $("<li>").append(answerArray1[i])
+        console.log(answerArray1)
     }
     $("#ans2").on("click", function() {
          console.log(questionMove)
             
-         var answerPool = answerArray0
+         var answerPool = answerArray1
             if (arrayQu = 0) {
-                answerPool = answerArray0
+                answerPool = answerArray1
             }
             else if (arrayQu = 1) {
-                answerPool = answerArray1
+                answerPool = answerArray2
             }
     
             else if (arrayQu = 2) {
-                answerPool = answerArray2
+                answerPool = answerArray3
             }
             else if (arrayQu = 3) {
-                answerPool = answerArray3
+                answerPool = answerArray4
             }
             console.log(arrayQu)
             console.log(answerPool)
