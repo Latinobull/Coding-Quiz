@@ -151,13 +151,7 @@ function Highscore(event) {
     }
 }
 
-$("#returnBtn").on("click", function() {
-    highScore.css("display", "none")
-    $("#begin").css("display", "block")
-    arrayQu = 0
-    $("#ques").text(questionArray[arrayQu])
 
-})
 
 function getScores(event) {
     event.preventDefault
