@@ -47,16 +47,14 @@ $("#readyButton").on("click", function() {
         }
     }, 1000)    
 })
-//function to display questions and interaction with right and wrong answers
+//this took me so long to figure out and its still not perfect need to work on this section more
 
 function questionStrings(){
     questionMove = false
-    console.log(questionMove)
     $(".answerlist").empty()
     $("#ques").text(questionArray[arrayQu])
     
-    //console.log(arrayQu)
-    //console.log(answerPool)
+
     for ( i = 0; i < answerPool.length; i++) {
         var answerList = $("<li>")
         var button = $("<button>")
@@ -70,7 +68,7 @@ function questionStrings(){
     
     $("body").on("click", "[id^='1']", function() {
         questionMove = true
-         console.log(questionMove)
+
             
          
             
@@ -95,20 +93,18 @@ function questionStrings(){
             else if (arrayQu >= 5) {
                 return endQuiz()
             }
-            console.log(arrayQu)
+        
             questionMove = !true
-            //console.log(questionMove)
             questionStrings()
         }   
         else {
-             console.log("wrong answer")
+             alert("Wrong answer try again")
             }
 
     })
     
 
 }
-// I CANT FIGURE THIS OUT!!!!!!!AERHGAEIHFBGA0EF
 
 function endQuiz() {
     questionsEl.css("display", "none")
@@ -123,19 +119,18 @@ function endQuiz() {
         e.preventDefault()
         var nameEntered = userName.value
         if (nameEntered != "")
-    
+    // was able to get the score in the localstorage but the name was a problem for me  need to work on this more
             var userRecord = {
                 userName: nameEntered,
                 userScore: timeDisplay,
             }
-            console.log(userRecord) 
+            
             savedScores.push(userRecord)
             userStorage.setItem("saved scores", JSON.stringify(savedScores))
     })
 }
 
 
-// function to show how the final score and to enter high score
 $("#hsbutton").on("click", function() {
     questionsEl.css("display", "none")
     saveScore.css("display", "none")
@@ -144,7 +139,7 @@ $("#hsbutton").on("click", function() {
 })
 function Highscore(event) {
     event.preventDefault()
-
+// Dont know why its not showing up need to work on these section as well
     for (var i = 0; i < savedScores.length; i++) {
         var userNameLog = $("<li>")
         var userScoreLog = $("<li>")
@@ -152,6 +147,7 @@ function Highscore(event) {
         userNameLog.text(savedScores[i].userName)
         $("#hsscreen").append(userScoreLog)
         userNameLog.text(savedScores[i].userScore)
+        getScores()
     }
 }
 
@@ -160,7 +156,6 @@ $("#returnBtn").on("click", function() {
     $("#begin").css("display", "block")
     arrayQu = 0
     $("#ques").text(questionArray[arrayQu])
-    console.log(arrayQu)
 
 })
 
