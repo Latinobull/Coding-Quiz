@@ -15,12 +15,12 @@ body {
 }
 
 /*Intro section */
-#ansButton {
+.ansButton {
   background: none;
   border: none;
 }
 
-#ansButton:hover {
+.ansButton:hover {
   background-color: rgb(0, 209, 63);
 }
 

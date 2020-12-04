@@ -27,11 +27,13 @@ timeLeft.text(timeDisplay)
 //function to start the game 
 $("#readyButton").on("click", function() {
     timeDisplay = 60
+    arrayQu = 0
+    answerPool = answerArray1
     timeLeft.text(timeDisplay)
     
     $("#begin").css("display", "none")
-    questionsEl.css("display", "block")
     questionStrings()
+    questionsEl.css("display", "block")
     //countdown timer
     interval = setInterval(function(){
         if (timeDisplay > 0){ 
@@ -39,7 +41,7 @@ $("#readyButton").on("click", function() {
             timeLeft.text(timeDisplay)
             
         }
-        else if (timeDisplay == 0 || arrayQu == 5){
+        else if (timeDisplay == 0 || arrayQu > 4){
             clearInterval(interval)
            return endQuiz()
         }
@@ -50,19 +52,19 @@ $("#readyButton").on("click", function() {
 function questionStrings(){
     questionMove = false
     console.log(questionMove)
-    $(".test").empty()
+    $(".answerlist").empty()
     $("#ques").text(questionArray[arrayQu])
     
     //console.log(arrayQu)
-    console.log(answerPool)
+    //console.log(answerPool)
     for ( i = 0; i < answerPool.length; i++) {
-        var test = $("<li>")
+        var answerList = $("<li>")
         var button = $("<button>")
         button.addClass("answers")
         button.attr("id", i)
         button.text(answerPool[i])
-        test.append(button)
-        $(".test").append(test)
+        answerList.append(button)
+        $(".answerlist").append(answerList)
 
     }
     
@@ -73,27 +75,29 @@ function questionStrings(){
          
             
         if (questionMove === true) {
-            arrayQu ++
-            if (arrayQu = 0) {
+            arrayQu++
+            if (arrayQu == 0) {
                 answerPool = answerArray1
             }
-            else if (arrayQu = 1) {
+            else if (arrayQu == 1) {
                 answerPool = answerArray2
             }
         
-            else if (arrayQu = 2) {
+            else if (arrayQu == 2) {
                 answerPool = answerArray3
             }
-            else if (arrayQu = 3) {
+            else if (arrayQu == 3) {
                 answerPool = answerArray4
             }
-            else if (arrayQu = 4) {
+            else if (arrayQu == 4) {
                 answerPool = answerArray5
             }
+            else if (arrayQu >= 5) {
+                return endQuiz()
+            }
             console.log(arrayQu)
-            //console.log(questionArray[arrayQu])
             questionMove = !true
-            console.log(questionMove)
+            //console.log(questionMove)
             questionStrings()
         }   
         else {
@@ -108,6 +112,7 @@ function questionStrings(){
 
 function endQuiz() {
     questionsEl.css("display", "none")
+    highScore.css("display", "none")
     saveScore.css("display", "block")
     score.text(timeDisplay)
     $("#redoBtn").on("click", function() {
@@ -153,6 +158,15 @@ function Highscore(event) {
 $("#returnBtn").on("click", function() {
     highScore.css("display", "none")
     $("#begin").css("display", "block")
-})
-//restart button function
+    arrayQu = 0
+    $("#ques").text(questionArray[arrayQu])
+    console.log(arrayQu)
 
+})
+
+function getScores(event) {
+    event.preventDefault
+    if (userStorage.getItem("saved scores")) {
+        savedScores = JSON.parse(userStorage.getItem("saved scores"))
+    }
+}
