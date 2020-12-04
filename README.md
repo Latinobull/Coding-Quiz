@@ -10,5 +10,5 @@ This is application is made through javascript, html, css and jquery. There is D
 
 ### Application
 
-<img src="photo-of-application.jpg">
+<img src = "photo-of-application.png">
 https://latinobull.github.io/Coding-Quiz/
